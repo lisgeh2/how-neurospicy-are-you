@@ -71,6 +71,8 @@ NORM_ADHD_GROUP_SD = 6.68
 
 
 
+
+
 if __name__ == "__main__":
     autism_mean = calculate_sum(find_questions_end_with("_autism", token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08"), token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08")
     adhd_mean = calculate_sum(find_questions_end_with("_adhd", token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08"), token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08")
@@ -78,7 +80,7 @@ if __name__ == "__main__":
     with open("preview.html", "w", encoding="utf-8") as f:
         f.write(
             "<!doctype html><meta charset='utf-8'>"
-            "<body style='margin:0;padding:24px;background:#f9fafb;max-width:820px'>"
+            "<body style='margin:0 auto;padding:24px;background:#f9fafb;max-width:820px'>"
             f"{certificate_html}</body>"
         )
     print("preview.html geschrieben")

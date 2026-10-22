@@ -75,6 +75,8 @@ _TITLE_CSS = """
 #__UID__ {
   text-align: center;
   padding: 24px 16px 16px;
+  max-width: 820px;
+  margin: 0 auto;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 #__UID__ h1 {
@@ -115,7 +117,8 @@ _CHART_CSS = """
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 18px 20px 16px;
-  margin: 0 0 20px;
+  max-width: 820px;
+  margin: 0 auto 20px;
   box-sizing: border-box;
 }
 
@@ -349,7 +352,7 @@ if __name__ == "__main__":
     with open("preview.html", "w", encoding="utf-8") as f:
         f.write(
             "<!doctype html><meta charset='utf-8'>"
-            "<body style='margin:0;padding:24px;background:#f9fafb;max-width:820px'>"
+            "<body style='margin:0 auto;padding:24px;background:#f9fafb;max-width:820px'>"
             f"{page}</body>"
         )
     print("preview.html geschrieben")
