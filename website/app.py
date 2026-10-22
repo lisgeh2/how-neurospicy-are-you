@@ -235,8 +235,8 @@ def submit() -> None:
     token = [r for r in records if r["username"] == username][-1]["token"]
     st.session_state.token = token
 
-    autism_mean = pr.calculate_average(pr.find_questions_end_with("_autism", token=token), token=token)
-    adhd_mean = pr.calculate_average(pr.find_questions_end_with("_adhd", token=token), token=token)
+    autism_mean = pr.calculate_sum(pr.find_questions_end_with("_autism", token=token), token=token)
+    adhd_mean = pr.calculate_sum(pr.find_questions_end_with("_adhd", token=token), token=token)
 
     st.session_state.certificate_html = (
         rc.render_title_html() + rc.render_adhd_html(adhd_mean) + rc.render_autism_html(autism_mean)

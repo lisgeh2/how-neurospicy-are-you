@@ -33,7 +33,7 @@ def likert_to_number(likert_item):
         print(f"this doesn't have a proper likert format, first letter is {num}")
         return None
 
-def calculate_average(list_of_vars, token="0dbf99c72f98247392b90464ec3eb13a90f8244d9610fef4817cbc1fe327fc91"):
+def calculate_sum(list_of_vars, token="0dbf99c72f98247392b90464ec3eb13a90f8244d9610fef4817cbc1fe327fc91"):
     list_of_vars_int = []
     for var in list_of_vars:
         user_record = next(r for r in responses if r["token"] == token)
@@ -48,7 +48,7 @@ def calculate_average(list_of_vars, token="0dbf99c72f98247392b90464ec3eb13a90f82
     # We ignore Nones:
     list_of_vars_int = [answer for answer in list_of_vars_int if answer is not None]
 
-    return mean(list_of_vars_int)
+    return sum(list_of_vars_int)
 
 
 def find_questions_end_with(suffix="_autism", token=...):
@@ -72,8 +72,8 @@ NORM_ADHD_GROUP_SD = 6.68
 
 
 if __name__ == "__main__":
-    autism_mean = calculate_average(find_questions_end_with("_autism", token="d34cb002ae1f95aa1ee668a36dce688ad2cfbe76544dbfd0944ae955e2c5716e"), token="d34cb002ae1f95aa1ee668a36dce688ad2cfbe76544dbfd0944ae955e2c5716e")
-    adhd_mean = calculate_average(find_questions_end_with("_adhd", token="d34cb002ae1f95aa1ee668a36dce688ad2cfbe76544dbfd0944ae955e2c5716e"), token="d34cb002ae1f95aa1ee668a36dce688ad2cfbe76544dbfd0944ae955e2c5716e")
+    autism_mean = calculate_sum(find_questions_end_with("_autism", token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08"), token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08")
+    adhd_mean = calculate_sum(find_questions_end_with("_adhd", token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08"), token="36474d9016610351a4955b014a496bc30db936b8b8497451a71c08772a9bfc08")
     certificate_html = (rc.render_title_html() + rc.render_adhd_html(adhd_mean) + rc.render_autism_html(autism_mean))
     with open("preview.html", "w", encoding="utf-8") as f:
         f.write(
@@ -82,4 +82,3 @@ if __name__ == "__main__":
             f"{certificate_html}</body>"
         )
     print("preview.html geschrieben")
-    print(calculate_average(["absorption1", "absorption2", "absorption3"]))
