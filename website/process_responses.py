@@ -51,11 +51,9 @@ def calculate_average(list_of_vars, token="0dbf99c72f98247392b90464ec3eb13a90f82
     return mean(list_of_vars_int)
 
 
-def find_questions_end_with(var="_autism", token="0dbf99c72f98247392b90464ec3eb13a90f8244d9610fef4817cbc1fe327fc91"):
+def find_questions_end_with(suffix="_autism", token=...):
     user_record = next(r for r in responses if r["token"] == token)
-    answer = user_record["answers"][var]
-    return [var for var in answer.keys() if var.endswith(var)]
-
+    return [key for key in user_record["answers"] if key.endswith(suffix)]
 
 
 

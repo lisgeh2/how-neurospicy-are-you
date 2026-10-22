@@ -229,7 +229,7 @@ def submit() -> None:
         return
 
     username = current_user()
-    storage.save_response(username, answers := collect_answers())
+    storage.save_response(answers := collect_answers(), username)
 
     records = pr.reload_responses()
     token = [r for r in records if r["username"] == username][-1]["token"]
